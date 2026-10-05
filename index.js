@@ -3,13 +3,22 @@ const createLoginTracker = (userInfo) => {
 
     const login = (password) => {
         if (attempts >= 3) {
-            return "Account locked";
+            return "Account locked due to too many failed login attempts";
         }
-    };
+        
 
-    return login;
+        if (password === userInfo.password) {
+            return "Login successful";
+        }
+
+        attempts++;
+
+            return `Attempt ${attempts}: Login failed`;
+        };
+
+        return login;
     
-};
+      };
 
 
 module.exports = {
